@@ -12,7 +12,10 @@ import { AppBar, IconButton, InputBase, Toolbar, useTheme } from '@mui/material'
 import FlexBetween from 'components/FlexBetween';
 
 
-const Navbar = () => {
+const Navbar = ({
+  isSidebarOpen,
+  setIsSidebarOpen,
+}) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -26,7 +29,7 @@ const Navbar = () => {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* LEFT SIDE */}
         <FlexDetween>
-          <IconButton onClick={() => console.log('open/close sidebar')}>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
           <FlexBetween
@@ -41,7 +44,6 @@ const Navbar = () => {
             </IconButton>
           </FlexBetween>
         </FlexDetween>
-
         {/*RIGHT SIDEBAR*/}
         <FlexBetween gap="1.5rem">
           <IconButton onClick={() => dispatch(setMode())}>
